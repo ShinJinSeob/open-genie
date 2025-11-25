@@ -12,3 +12,4 @@ procgen==0.10.7
 gym==0.26.2
 imageio==2.37.2
 imageio-ffmpeg==0.3.0
+jsonargparse[signatures]>=4.27.7
