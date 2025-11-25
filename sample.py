@@ -56,7 +56,7 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Generate videos of a gym environment')
     parser.add_argument('--env_name', type=str, default='Coinrun', help='Name of the environment')
-    parser.add_argument('--num_envs', type=int, default=1, help='Number of samples to generate')
+    parser.add_argument('--num_envs', type=int, default=3, help='Number of samples to generate')
     parser.add_argument('--timeout', type=int, default=1000, help='Timeout for generating samples')
     parser.add_argument('--root', type=str, default=ROOT, help='Root folder where to save the videos')
 

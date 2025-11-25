@@ -7,7 +7,6 @@ def cli_main():
     '''
     Main function for the training script.
     '''
-    
     # That's all it takes for LightningCLI to work!
     # No need to call .fit() or .test() or anything like that.
     cli = LightningCLI(
