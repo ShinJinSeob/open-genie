@@ -5,8 +5,9 @@ from os import makedirs
 
 import argparse
 from tqdm.auto import trange
+import procgen
 
-ROOT='path/to/data'
+ROOT='C:\\Users\\sjs02\\open-genie\\data'
 
 def save_frames_to_video(frames, output_file, fps=30):
     # Get the shape of the frame to set the video width and height

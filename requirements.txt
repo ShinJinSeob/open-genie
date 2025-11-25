@@ -2,3 +2,12 @@ einops==0.8.0
 lightning==2.2.4
 setuptools==69.5.1
 torch==2.3.0
+
+# Pinned additional dependencies needed to run `sample.py`
+opencv-python==4.7.0.72
+numpy==1.26.4
+tqdm==4.67.1
+procgen==0.10.7
+gym==0.26.2
+imageio==2.37.2
+imageio-ffmpeg==0.3.0
