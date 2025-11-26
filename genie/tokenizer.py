@@ -236,7 +236,19 @@ class VideoTokenizer(LightningModule):
         self,
         enc_desc : Blueprint,
         dec_desc : Blueprint,
-        disc_kwargs : Dict[str, Any] = {},
+        # Discriminator parameters (flattened from disc_kwargs)
+        inp_size : Tuple[int, int] | None = None,
+        model_dim : int = 64,
+        dim_mults : Tuple[int, ...] = (1, 2, 4),
+        down_step : Tuple[int | None, ...] = (None, 2, 2),
+        inp_channels : int = 3,
+        kernel_size : int = 3,
+        num_groups : int = 8,
+        act_fn : str = 'leaky',
+        use_blur : bool = True,
+        use_attn : bool = False,
+        num_heads : int = 4,
+        dim_head : int = 32,
         # Lookup-Free Quantization parameters
         d_codebook : int = 18,
         n_codebook : int = 1,
@@ -292,6 +304,21 @@ class VideoTokenizer(LightningModule):
             ) if perc_loss_weight > 0 else nn.Identity()
         
         # If the GAN loss is enabled, load the Discriminator model
+        disc_kwargs = {
+            'inp_size': inp_size,
+            'model_dim': model_dim,
+            'dim_mults': dim_mults,
+            'down_step': down_step,
+            'inp_channels': inp_channels,
+            'kernel_size': kernel_size,
+            'num_groups': num_groups,
+            'act_fn': act_fn,
+            'use_blur': use_blur,
+            'use_attn': use_attn,
+            'num_heads': num_heads,
+            'dim_head': dim_head,
+        } if inp_size is not None else {}
+        
         self.gan_crit = GANLoss(
                 discriminate=gan_discriminate,
                 num_frames=gan_frames_per_batch,
